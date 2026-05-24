@@ -6,7 +6,7 @@ function Sidebar({onSelectProject}){
     const [projects,setProjects]= useState([]);
 
     const fetchProjects=()=>{
-        fetch('http://localhost:5000/api/projects')
+        fetch('https://mern-agile-tracker.onrender.com/api/projects')
         .then((response)=> response.json())
         .then((data)=>{
             setProjects(data);
@@ -21,7 +21,7 @@ function Sidebar({onSelectProject}){
         const projectName = window.prompt("Enter new project name:");
         if (!projectName) return;
 
-        fetch('http://localhost:5000/api/projects', {
+        fetch('https://mern-agile-tracker.onrender.com/api/projects', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name: projectName, description: "A new workspace" })
