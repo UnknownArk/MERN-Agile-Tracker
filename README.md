@@ -57,20 +57,20 @@ npm run dev
 
 ## Folder Structure
 
+```text
 MERN-Agile-Tracker/
-|
 ├── backend/
-│   ├── models/        # Mongoose database schemas (Project.js, Task.js)
-│   ├── routes/        # Express API endpoints
-│   ├── .env           # Environment variables (Ignored by Git)
-│   └── server.js      # Main application entry point
-|
+│   ├── models/        # Database schemas
+│   ├── routes/        # API endpoints
+│   ├── .env           # Environment variables
+│   └── server.js      # Main application entry
 └── frontend/
     ├── src/
-    │   ├── components/# Reusable UI elements (Sidebar, KanbanBoard)
+    │   ├── components/# Reusable UI elements
     │   ├── App.jsx    # Main React component
     │   └── main.jsx   # DOM rendering
-    └── vite.config.js # Vite bundler configuration
+    └── vite.config.js # Vite configuration
+```
 
 ## Author
 **PRADNESH R**
