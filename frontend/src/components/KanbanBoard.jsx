@@ -7,7 +7,7 @@ function KanbanBoard({ project }) {
     const columns = ['To Do', 'In Progress', 'Done'];
 
     const fetchTasks = () => {
-        fetch(`http://localhost:5000/api/tasks/project/${project._id}`)
+        fetch(`https://mern-agile-tracker.onrender.com/api/tasks/project/${project._id}`)
             .then(res => res.json())
             .then(data => setTasks(data))
             .catch(err => console.error("Error fetching tasks:", err));
@@ -21,7 +21,7 @@ function KanbanBoard({ project }) {
         const title = window.prompt("Enter task title:");
         if (!title) return;
 
-        fetch('http://localhost:5000/api/tasks', {
+        fetch('https://mern-agile-tracker.onrender.com/api/tasks', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -45,7 +45,7 @@ function KanbanBoard({ project }) {
         setTasks(prevTasks => prevTasks.map(task =>
             task._id === taskId ? { ...task, status: newStatus } : task
         ));
-        fetch(`http://localhost:5000/api/tasks/${taskId}`, {
+        fetch(`https://mern-agile-tracker.onrender.com/api/tasks/${taskId}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ status: newStatus })
