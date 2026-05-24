@@ -1,0 +1,36 @@
+.sidebar{
+    width:260px;
+    height:100vh;
+    border-right:1px solid #dfe1e6;
+    background-color:#ffffff;
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+}
+.sidebar-title{
+    font-size: 14px;
+    font-weight: 700;
+    color:#5e6c84;
+    text-transform:uppercase;
+    margin: bottom 15px;
+    letter-spacing:0.5px;
+}
+
+.project-item{
+    display:flex;
+    align-items:center;
+    padding:10px;
+    margin-bottom:5px;
+    border-radius:5px;
+    cursor:pointer;
+    transition:background-color 0.2s ease;
+}
+
+.project-item:hover{
+    background-color:#ebecf0;
+}
+
+.project-icon{
+    margin-right:10px;
+    color:#42526e;
+}
