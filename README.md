@@ -1,24 +1,24 @@
-# 🚀 MERN Agile Issue Tracker (Jira Clone)
+# MERN Agile Issue Tracker (Jira Clone)
 
 **Live Demo:** [View the Live Application Here](https://mern-agile-tracker.vercel.app)
 
 A full-stack, responsive project management dashboard built from scratch. This application replicates the core functionality of Jira, allowing users to create workspaces, add tasks, and manage their workflow using a seamless drag-and-drop Kanban interface.
 
-## 🌟 Features
+## Features
 * **Interactive Kanban Board:** Full HTML5 Drag-and-Drop API integration for moving tasks between 'To Do', 'In Progress', and 'Done' columns.
 * **Real-time State Management:** Instant UI updates synced seamlessly with the database.
 * **RESTful API:** Robust backend architecture handling full CRUD operations for projects and tasks.
 * **Persistent Data:** Cloud-hosted MongoDB database ensuring zero data loss across sessions.
 * **Responsive UI:** Clean, modern interface styled with standard CSS and Lucide-React iconography.
 
-## 🛠️ Tech Stack
+## Tech Stack
 * **Frontend:** React.js, Vite, HTML5 Drag-and-Drop, CSS3 (Deployed on Vercel)
 * **Backend:** Node.js, Express.js, CORS (Deployed on Render)
 * **Database:** MongoDB Atlas, Mongoose ORM
 
 ---
 
-## 💻 Local Setup & Installation
+## Local Setup & Installation
 
 To run this project locally on your machine, follow these steps:
 
@@ -55,7 +55,7 @@ npm run dev
 
 ---
 
-## 📁 Folder Structure
+## Folder Structure
 \`\`\`text
 MERN-Agile-Tracker/
 ├── backend/
@@ -71,7 +71,7 @@ MERN-Agile-Tracker/
     └── vite.config.js # Vite bundler configuration
 \`\`\`
 
-## 👨‍💻 Author
+## Author
 **PRADNESH R**
 * GitHub: [@UnknownArk](https://github.com/UnknownArk/)
 * LinkedIn: [Pradnesh R](https://www.linkedin.com/in/pradnesh-r/)
