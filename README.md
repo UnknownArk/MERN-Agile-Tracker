@@ -1,29 +1,77 @@
-# Agile Issue Tracker (Jira Clone)
+# 🚀 MERN Agile Issue Tracker (Jira Clone)
 
-A full-stack project management dashboard built from scratch using the MERN stack. This application features a persistent MongoDB database, a RESTful Express/Node API, and an interactive React frontend with live drag-and-drop Kanban functionality.
+**Live Demo:** [View the Live Application Here](https://mern-agile-tracker.vercel.app)
 
-## Tech Stack
-* **Frontend:** React, Vite, Lucide-React
-* **Backend:** Node.js, Express.js
-* **Database:** MongoDB, Mongoose
+A full-stack, responsive project management dashboard built from scratch. This application replicates the core functionality of Jira, allowing users to create workspaces, add tasks, and manage their workflow using a seamless drag-and-drop Kanban interface.
 
-## Folder Structure
-* `/backend`: Contains the Node/Express server, Mongoose `models`, and API `routes`.
-* `/frontend`: Contains the Vite/React application and UI `components`.
+## 🌟 Features
+* **Interactive Kanban Board:** Full HTML5 Drag-and-Drop API integration for moving tasks between 'To Do', 'In Progress', and 'Done' columns.
+* **Real-time State Management:** Instant UI updates synced seamlessly with the database.
+* **RESTful API:** Robust backend architecture handling full CRUD operations for projects and tasks.
+* **Persistent Data:** Cloud-hosted MongoDB database ensuring zero data loss across sessions.
+* **Responsive UI:** Clean, modern interface styled with standard CSS and Lucide-React iconography.
 
-## Local Setup Instructions
+## 🛠️ Tech Stack
+* **Frontend:** React.js, Vite, HTML5 Drag-and-Drop, CSS3 (Deployed on Vercel)
+* **Backend:** Node.js, Express.js, CORS (Deployed on Render)
+* **Database:** MongoDB Atlas, Mongoose ORM
 
-### 1. Database Configuration
-Ensure you have MongoDB installed and running locally on your machine. The backend is configured to connect to standard local port `27017`.
+---
 
-### 2. Backend Setup
-1. Open a terminal and navigate to the `backend` directory.
-2. Run `npm install` to install dependencies (Express, Mongoose, Cors).
-3. Run `node server.js` to start the backend API.
-4. You should see success messages for port 5000 and the database connection.
+## 💻 Local Setup & Installation
 
-### 3. Frontend Setup
-1. Open a second terminal and navigate to the `frontend` directory.
-2. Run `npm install` to install React dependencies.
-3. Run `npm run dev` to start the Vite development server.
-4. Open the provided localhost link (usually `http://localhost:5173`) in your browser.
+To run this project locally on your machine, follow these steps:
+
+### 1. Clone the Repository
+\`\`\`bash
+git clone https://github.com/YOUR_USERNAME/MERN-Agile-Tracker.git
+cd MERN-Agile-Tracker
+\`\`\`
+
+### 2. Environment Variables
+Create a `.env` file in the `backend` directory and add your MongoDB connection string:
+\`\`\`text
+MONGO_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/jira-db
+PORT=5000
+\`\`\`
+
+### 3. Backend Installation
+Open a terminal in the root directory and start the Express server:
+\`\`\`bash
+cd backend
+npm install
+node server.js
+\`\`\`
+*The server will run on http://localhost:5000*
+
+### 4. Frontend Installation
+Open a second terminal in the root directory and start the React app:
+\`\`\`bash
+cd frontend
+npm install
+npm run dev
+\`\`\`
+*The client will run on http://localhost:5173*
+
+---
+
+## 📁 Folder Structure
+\`\`\`text
+MERN-Agile-Tracker/
+├── backend/
+│   ├── models/        # Mongoose database schemas (Project.js, Task.js)
+│   ├── routes/        # Express API endpoints
+│   ├── .env           # Environment variables (Ignored by Git)
+│   └── server.js      # Main application entry point
+└── frontend/
+    ├── src/
+    │   ├── components/# Reusable UI elements (Sidebar, KanbanBoard)
+    │   ├── App.jsx    # Main React component
+    │   └── main.jsx   # DOM rendering
+    └── vite.config.js # Vite bundler configuration
+\`\`\`
+
+## 👨‍💻 Author
+**PRADNESH R**
+* GitHub: [@UnknownArk](https://github.com/UnknownArk/)
+* LinkedIn: [Pradnesh R](https://www.linkedin.com/in/pradnesh-r/)
