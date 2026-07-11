@@ -1,78 +1,175 @@
-# MERN Agile Issue Tracker (Jira Clone)
+# SprintForge
 
-**Live Demo:** [View the Live Application Here](https://mern-agile-tracker.vercel.app)
+![SprintForge Hero](frontend/public/logo.jpg)
 
-A full-stack, responsive project management dashboard built from scratch. This application replicates the core functionality of Jira, allowing users to create workspaces, add tasks, and manage their workflow using a seamless drag-and-drop Kanban interface.
+**SprintForge** is a modern, high-performance Kanban board and project management tool designed to streamline agile workflows. It features an intuitive drag-and-drop interface, real-time status updates, and secure JWT-based authentication. 
 
-## Features
-* **Interactive Kanban Board:** Full HTML5 Drag-and-Drop API integration for moving tasks between 'To Do', 'In Progress', and 'Done' columns.
-* **Real-time State Management:** Instant UI updates synced seamlessly with the database.
-* **RESTful API:** Robust backend architecture handling full CRUD operations for projects and tasks.
-* **Persistent Data:** Cloud-hosted MongoDB database ensuring zero data loss across sessions.
-* **Responsive UI:** Clean, modern interface styled with standard CSS and Lucide-React iconography.
-
-## Tech Stack
-* **Frontend:** React.js, Vite, HTML5 Drag-and-Drop, CSS3 (Deployed on Vercel)
-* **Backend:** Node.js, Express.js, CORS (Deployed on Render)
-* **Database:** MongoDB Atlas, Mongoose ORM
+Built from the ground up with a focus on premium UI/UX, SprintForge utilizes modern technologies to ensure reliability, scalability, and an excellent developer experience.
 
 ---
 
-## Local Setup & Installation
+## 🚀 Features
 
-To run this project locally on your machine, follow these steps:
-
-### 1. Clone the Repository
-\`\`\`bash
-git clone https://github.com/YOUR_USERNAME/MERN-Agile-Tracker.git
-cd MERN-Agile-Tracker
-\`\`\`
-
-### 2. Environment Variables
-Create a `.env` file in the `backend` directory and add your MongoDB connection string:
-\`\`\`text
-MONGO_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/jira-db
-PORT=5000
-\`\`\`
-
-### 3. Backend Installation
-Open a terminal in the root directory and start the Express server:
-\`\`\`bash
-cd backend
-npm install
-node server.js
-\`\`\`
-*The server will run on http://localhost:5000*
-
-### 4. Frontend Installation
-Open a second terminal in the root directory and start the React app:
-\`\`\`bash
-cd frontend
-npm install
-npm run dev
-\`\`\`
-*The client will run on http://localhost:5173*
+- **Agile Kanban Board**: Organize tasks into "To Do", "In Progress", and "Done" columns.
+- **Drag & Drop**: Seamlessly move tasks across columns with fluid physics powered by `@hello-pangea/dnd`.
+- **Project Workspaces**: Create unlimited projects and toggle between them instantly in the sidebar.
+- **Secure Authentication**: JWT-based authentication with bcrypt password hashing and Zod schema validation.
+- **Optimistic UI Updates**: State changes reflect instantly in the browser via Zustand while synchronizing with the backend in the background.
 
 ---
 
-## Folder Structure
+## 🛠️ Tech Stack
 
-```text
-MERN-Agile-Tracker/
-├── backend/
-│   ├── models/        # Database schemas
-│   ├── routes/        # API endpoints
-│   ├── .env           # Environment variables
-│   └── server.js      # Main application entry
-└── frontend/
-    ├── src/
-    │   ├── components/# Reusable UI elements
-    │   ├── App.jsx    # Main React component
-    │   └── main.jsx   # DOM rendering
-    └── vite.config.js # Vite configuration
+### Frontend
+- **React.js** (Vite for lightning-fast HMR)
+- **TypeScript** (Strict typing for robust components)
+- **Zustand** (Lightweight global state management)
+- **React Router v6** (Client-side navigation)
+- **Vanilla CSS** (Custom scoped styling without utility class bloat)
+
+### Backend
+- **Node.js & Express** (REST API)
+- **TypeScript** (End-to-end type safety)
+- **MongoDB & Mongoose** (NoSQL Database)
+- **Zod** (Runtime schema validation)
+- **JWT & bcryptjs** (Security and Authentication)
+
+---
+
+## 🗃️ Database Architecture
+
+Below is the Entity Relationship (ER) Diagram representing how data flows in SprintForge:
+
+```mermaid
+erDiagram
+    USER ||--o{ PROJECT : owns
+    USER ||--o{ TASK : owns
+    USER ||--o{ TASK : "is assigned to"
+    PROJECT ||--o{ TASK : contains
+
+    USER {
+        ObjectId _id PK
+        String name
+        String email "unique"
+        String password "hashed"
+        Date createdAt
+        Date updatedAt
+    }
+
+    PROJECT {
+        ObjectId _id PK
+        String name
+        String description
+        ObjectId owner FK "ref: User"
+        Date createdAt
+        Date updatedAt
+    }
+
+    TASK {
+        ObjectId _id PK
+        String title
+        String description
+        String status "enum: To Do, In Progress, Done"
+        String priority "enum: Low, Medium, High"
+        ObjectId project FK "ref: Project"
+        ObjectId owner FK "ref: User"
+        ObjectId assignee FK "ref: User (nullable)"
+        Date createdAt
+        Date updatedAt
+    }
 ```
 
-## Author
-**PRADNESH R**
-* GitHub: [@UnknownArk](https://github.com/UnknownArk/)
-* LinkedIn: [Pradnesh R](https://www.linkedin.com/in/pradnesh-r/)
+---
+
+## 📂 File Organization
+
+The repository is structured as a monorepo containing both the `frontend` and `backend` applications.
+
+```text
+SprintForge/
+├── backend/
+│   ├── middleware/      # Express middleware (Auth, Error handling)
+│   ├── models/          # Mongoose Schemas (User, Project, Task)
+│   ├── routes/          # API endpoints
+│   ├── scripts/         # Utility scripts (Database seeder)
+│   ├── types/           # Global TypeScript interfaces
+│   ├── .env.example     # Environment variable template
+│   └── server.ts        # Express server entry point
+│
+├── frontend/
+│   ├── public/          # Static assets (Logo, Favicon)
+│   ├── src/
+│   │   ├── components/  # Reusable React components (Kanban, Sidebar, Modals)
+│   │   ├── pages/       # Route-level components (Login, Register, Dashboard)
+│   │   ├── store/       # Zustand state stores
+│   │   ├── types/       # Global TypeScript interfaces
+│   │   └── main.tsx     # React application entry point
+│   ├── .env.example     # Environment variable template
+│   └── index.html       # HTML template
+│
+└── .gitignore           # Global git ignore configuration
+```
+
+---
+
+## 💻 Local Setup Instructions
+
+### Prerequisites
+- Node.js (v18+)
+- MongoDB (Running locally on port 27017 or via Atlas)
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/yourusername/sprintforge.git
+cd sprintforge
+```
+
+### 2. Backend Setup
+```bash
+cd backend
+npm install
+
+# Create environment file
+cp .env.example .env
+# Edit .env and ensure MONGO_URI is set (defaults to mongodb://127.0.0.1:27017/sprintforge-db)
+
+# Seed the database with demo data
+npm run seed
+
+# Start the development server (runs on port 5000)
+npm run dev
+```
+
+### 3. Frontend Setup
+```bash
+# Open a new terminal
+cd frontend
+npm install
+
+# Create environment file
+cp .env.example .env
+# Ensure VITE_API_URL=http://localhost:5000 is set
+
+# Start the Vite development server (runs on port 5173)
+npm run dev
+```
+
+### 4. Access the Application
+Open [http://localhost:5173](http://localhost:5173) in your browser.
+You can log in using the demo account generated by the seeder:
+- **Email:** `recruiter@demo.com`
+- **Password:** `password123`
+
+---
+
+## ☁️ Deployment Configuration
+
+To deploy SprintForge to production environments (like Vercel, Render, or Heroku):
+
+1. **Database:** Create a MongoDB Atlas cluster and obtain the connection string.
+2. **Backend:** Set the following environment variables on your host:
+   - `MONGO_URI`: Your MongoDB Atlas connection string.
+   - `JWT_SECRET`: A secure random string for token signing.
+   - `PORT`: (Usually provided dynamically by the host).
+3. **Frontend:** Build the frontend using `npm run build`. Set the following environment variable on your static hosting provider (e.g., Vercel):
+   - `VITE_API_URL`: The production URL of your deployed backend API.
