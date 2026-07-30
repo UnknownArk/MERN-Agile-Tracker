@@ -2,7 +2,7 @@
 
 ![SprintForge Hero](frontend/public/logo.jpg)
 
-[**🔗 View Live Demo Here**](https://mern-agile-tracker.vercel.app)
+[**🔗 View Live Demo Here**](https://sprintforge-tracker.vercel.app)
 
 SprintForge is a high-performance, Kanban-style project management tool engineered to streamline agile workflows. I built this application from the ground up to solve the friction in task tracking, focusing heavily on a fluid user experience and robust data synchronization. 
 

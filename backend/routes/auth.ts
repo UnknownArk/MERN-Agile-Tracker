@@ -58,12 +58,12 @@ router.post('/login', async (req: Request, res: Response): Promise<any> => {
 
         const user = await User.findOne({ email: validatedData.email });
         if (!user) {
-            return res.status(400).json({ message: "Invalid credentials" });
+            return res.status(404).json({ message: "Account not found. Please sign up first." });
         }
 
         const isMatch = await bcrypt.compare(validatedData.password, user.password);
         if (!isMatch) {
-            return res.status(400).json({ message: "Invalid credentials" });
+            return res.status(401).json({ message: "Incorrect password. Please try again." });
         }
 
         const token = jwt.sign(
